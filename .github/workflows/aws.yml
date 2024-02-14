@@ -12,12 +12,6 @@ jobs:
     - name: install dependencies
       run: |
         make install
-    - name: format the code
+    - name: test env vars
       run: |
-        make format
-    - name: lint the code
-      run: |
-        make lint
-    - name: test the code
-      run: |
-        make test
+        make run

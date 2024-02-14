@@ -12,3 +12,6 @@ lint:
 
 test:
 	pytest -vv --cov=main --cov=src tests/*.py
+
+run:
+	python3 main.py
