@@ -4,9 +4,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: access secrets
-      env: # as an environment variable
-        TESTSECRET: ${{ secrets.TESTSECRET }}
+    - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+      run: |
+        echo "The GitHub Action Secret will be masked:  "
+        echo ${{ secrets.TESTSECRET }}
+          
     - uses: actions/checkout@v2
     - name: set up python3.11
       uses: actions/setup-python@v1
