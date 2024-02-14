@@ -1,14 +1,20 @@
-import os, fire
+import os, fire, boto3
 from dotenv import load_dotenv
 from src.runtime_client import LexRuntimeV2Client
 
 load_dotenv(".env")
-API_KEY = os.environ.get("SECRETO")
+IAM_KEY = os.environ.get("IAM_KEY")
+IAM_SECRET = os.environ.get("IAM_SECRET")
+AWS_REGION = os.environ.get("REGION")
 
 if __name__ == "__main__":
-    print(os.environ)
-    print(API_KEY)
+    print([IAM_KEY, IAM_SECRET, AWS_REGION])
 
-    with open(".env", "r") as f:
-        secret = f.readline().split("=")[1].strip()
-        print(secret)
+    client = boto3.client(
+        "lexv2-runtime",
+        aws_access_key_id=IAM_KEY,
+        aws_secret_access_key=IAM_SECRET,
+        region_name=AWS_REGION
+    )
+    print(client)
+    
