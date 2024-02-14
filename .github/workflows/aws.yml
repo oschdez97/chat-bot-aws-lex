@@ -18,11 +18,13 @@ jobs:
         run: |
           make install
 
-      - name: Read secret and set environment variable
+      - name: Setting up environment variables
         run: |
           echo "IAM_KEY=${{ secrets.IAM_KEY }}" >> .env
           echo "IAM_SECRET=${{ secrets.IAM_SECRET }}" >> .env
           echo "REGION=${{ secrets.REGION }}" >> .env
+          echo "BOT_ID=${{ secrets.BOT_ID }}" >> .env
+          echo "REGION=${{ secrets.BOT_ALIAS_ID }}" >> .env
 
       - name: Test environment variables and application
         run: |

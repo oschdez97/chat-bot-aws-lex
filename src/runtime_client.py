@@ -2,9 +2,9 @@ import os, time, boto3
 from dotenv import load_dotenv
 
 load_dotenv(".env")
-AWS_KEY = os.environ.get("AWS_KEY")
-AWS_SECRET = os.environ.get("AWS_SECRET")
-AWS_REGION = os.environ.get("AWS_REGION")
+IAM_KEY = os.environ.get("IAM_KEY")
+IAM_SECRET = os.environ.get("IAM_SECRET")
+AWS_REGION = os.environ.get("REGION")
 
 
 class LexRuntimeV2Client:
@@ -15,8 +15,8 @@ class LexRuntimeV2Client:
         self.session_id = str(time.time())
         self.client = boto3.client(
             "lexv2-runtime",
-            aws_access_key_id=AWS_KEY,
-            aws_secret_access_key=AWS_SECRET,
+            aws_access_key_id=IAM_KEY,
+            aws_secret_access_key=IAM_SECRET,
             region_name=AWS_REGION,
         )
 
