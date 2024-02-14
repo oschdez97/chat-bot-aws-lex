@@ -20,8 +20,9 @@ jobs:
 
       - name: Read secret and set environment variable
         run: |
-          echo "SECRETO=${{ secrets.TESTSECRET }}" >> .env
-          source .env
+          echo "IAM_KEY=${{ secrets.IAM_KEY }}" >> .env
+          echo "IAM_SECRET=${{ secrets.IAM_SECRET }}" >> .env
+          echo "REGION=${{ secrets.REGION }}" >> .env
 
       - name: Test environment variables and application
         run: |
