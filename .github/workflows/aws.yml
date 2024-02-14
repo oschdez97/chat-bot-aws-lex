@@ -4,9 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: access secrets
-      env:
-        TESTSECRET: ${{ secrets.TESTSECRET }}
+    - name: set up env variable
+      run: |
+        echo "myvar=yellow" >> "$GITHUB_ENV"
     
     - uses: actions/checkout@v2
     - name: set up python3.11
