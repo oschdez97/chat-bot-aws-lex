@@ -1,4 +1,4 @@
-name: python3 test application with github actions and secrets
+name: chat-bot-aws-lex
 
 on: [push]
 
