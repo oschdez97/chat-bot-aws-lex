@@ -2,8 +2,7 @@ import os, fire
 from dotenv import load_dotenv
 from src.runtime_client import LexRuntimeV2Client
 
-load_dotenv(".env")
-TESTSECRET = os.environ.get("TESTSECRET")
+env_file = os.getenv('GITHUB_ENV')
 
 if __name__ == "__main__":
-    print(os.environ)
+    print(env_file)
