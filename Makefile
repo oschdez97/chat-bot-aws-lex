@@ -11,4 +11,4 @@ lint:
 	pylint --disable=R,C *.py src/*.py
 
 test:
-	# testing
+	pytest -vv --cov=main --cov=src tests/*.py
