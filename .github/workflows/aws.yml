@@ -26,7 +26,15 @@ jobs:
           echo "BOT_ID=${{ secrets.BOT_ID }}" >> .env
           echo "REGION=${{ secrets.BOT_ALIAS_ID }}" >> .env
 
-      - name: Test environment variables and application
+      - name: Format the code
         run: |
-          make run
+          make format
+
+      - name: Lint the code
+        run: |
+          make lint
+
+      - name: Test the code
+        run: |
+          make test
 
