@@ -1,21 +1,29 @@
-name: python3 test application with github actions
+name: python3 test application with github actions and secrets
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: create .env file
-      run: |
-        touch .env
-        echo API_KEY=${{ secrets.TESTSECRET }} >> .env
-    - uses: actions/checkout@v2
-    - name: set up python3.11
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.11
-    - name: install dependencies
-      run: |
-        make install
-    - name: test env vars
-      run: |
-        make run
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          make install
+
+      - name: Read secret and set environment variable
+        run: |
+          echo "SECRETO=${{ secrets.TESTSECRET }}" >> .env
+          source .env
+
+      - name: Test environment variables and application
+        run: |
+          make run
+
