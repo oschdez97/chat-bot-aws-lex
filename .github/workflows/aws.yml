@@ -3,9 +3,11 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      BEST_WHISKEY: Midleton
     steps:
+    - name: create .env file
+      run: |
+        touch .env
+        echo API_KEY=${{ secrets.TESTSECRET }} >> .env
     - uses: actions/checkout@v2
     - name: set up python3.11
       uses: actions/setup-python@v1
