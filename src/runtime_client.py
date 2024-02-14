@@ -21,6 +21,7 @@ class LexRuntimeV2Client:
         )
 
     def recognize_text(self, text):
+        """sends user prompt to the chatbot"""
         response = self.client.recognize_text(
             botId=self.bot_id,
             botAliasId=self.bot_alias_id,
