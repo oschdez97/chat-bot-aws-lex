@@ -6,4 +6,4 @@ load_dotenv(".env")
 TESTSECRET = os.environ.get("TESTSECRET")
 
 if __name__ == "__main__":
-    print(TESTSECRET)
+    print(os.environ)
