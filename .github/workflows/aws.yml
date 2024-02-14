@@ -1,0 +1,23 @@
+name: python3 test application with github actions
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up python3.11
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.11
+    - name: install dependencies
+      run: |
+        make install
+    - name: format the code
+      run: |
+        make format
+    - name: lint the code
+      run: |
+        make lint
+    - name: test the code
+      run: |
+        make test
