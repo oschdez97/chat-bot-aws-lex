@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Access secrets
+      run: |
+        echo "TESTSECRET: ${{ secrets.TESTSECRET }}"
     - name: set up python3.11
       uses: actions/setup-python@v1
       with:
