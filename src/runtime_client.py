@@ -20,13 +20,21 @@ class LexRuntimeV2Client:
             region_name=AWS_REGION,
         )
 
-    def recognize_text(self, text):
-        """sends user prompt to the chatbot"""
+    def recognize_text(self, text, sessionState):
+        """Sends user prompt to the chatbot"""
         response = self.client.recognize_text(
             botId=self.bot_id,
             botAliasId=self.bot_alias_id,
             localeId=self.locale_id,
             sessionId=self.session_id,
             text=text,
+            sessionState=sessionState,
         )
+        if response is not None:
+            intent_dict_clean = {
+                k: ({} if v is None else v)
+                for k, v in response["sessionState"]["intent"]["slots"].items()
+            }
+            response["sessionState"]["intent"]["slots"] = intent_dict_clean
+
         return response
