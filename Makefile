@@ -1,4 +1,4 @@
-all: install format lint test build
+all: install format lint test build deploy
 
 install:
 	python3 -m pip install --upgrade pip && \
@@ -15,3 +15,9 @@ test:
 
 build:
 	docker build -t deploy-fastapi .
+
+deploy:
+	aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 841032453446.dkr.ecr.eu-west-3.amazonaws.com
+	docker build -t fastapi-gdc-lexbot .
+	docker tag fastapi-gdc-lexbot:latest 841032453446.dkr.ecr.eu-west-3.amazonaws.com/fastapi-gdc-lexbot:latest
+	docker push 841032453446.dkr.ecr.eu-west-3.amazonaws.com/fastapi-gdc-lexbot:latest
