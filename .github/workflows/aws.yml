@@ -42,3 +42,7 @@ jobs:
         run: |
           make build
 
+      - name: Deploy to AWS ECR
+        run: |
+          make deploy
+
