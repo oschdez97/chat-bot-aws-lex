@@ -1,4 +1,4 @@
-all: install format lint test
+all: install format lint test build
 
 install:
 	python3 -m pip install --upgrade pip && \
@@ -12,3 +12,6 @@ lint:
 
 test:
 	pytest -vv --cov=src tests/*.py
+
+build:
+	docker build -t deploy-fastapi .

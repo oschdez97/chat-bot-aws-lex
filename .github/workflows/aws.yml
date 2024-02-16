@@ -38,3 +38,7 @@ jobs:
         run: |
           make test
 
+      - name: Build docker image
+        run: |
+          make build
+
